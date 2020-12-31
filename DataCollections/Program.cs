@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 
 namespace DataCollections
@@ -128,6 +130,58 @@ namespace DataCollections
 
             int bs = animalsList.BinarySearch("Camel");
             Console.WriteLine(bs); // 1
+
+            // create a ditionary
+            Dictionary<int, int> numberCount = new Dictionary<int, int>();
+
+            numberCount.Add(1, 5);
+            numberCount.Add(2, 3);
+            numberCount.Add(3, 0);
+
+            // Print all key-value pairs in a dictionary
+            foreach (KeyValuePair<int, int> kvp in numberCount)
+            {
+                Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+            }
+
+            // Print all key-value pairs in a dictionary
+            Console.WriteLine("Printing using ElementAt to access element at an index");
+            for (int i = 0; i < numberCount.Count; i++)
+            {
+                Console.WriteLine("Key: {0}, Value: {1}", numberCount.ElementAt(i).Key, numberCount.ElementAt(i).Value);
+            }
+
+            numberCount.Remove(3);
+
+            // Print all key-value pairs in a dictionary after removing a key-value pair
+            Console.WriteLine("Printing after removing a key-value pair from the dictionary");
+            foreach (KeyValuePair<int, int> kvp in numberCount)
+            {
+                Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+            }
+
+            // clear removes all key-value pairs from dictionary
+            numberCount.Clear();
+            Console.WriteLine($"Number of elements in the dictionary: {numberCount.Count}");
+
+            numberCount.Add(1, 5);
+            numberCount.Add(2, 3);
+            numberCount.Add(3, 0);
+
+            // create a list of all keys in a dictionary
+            var keysOfDict = numberCount.Keys.ToList();
+            foreach (int key in keysOfDict)
+            {
+                Console.WriteLine(key);
+            }
+
+            // create a list of all values in a dictionary
+            var valuesOfDict = numberCount.Values.ToList();
+            foreach(int val in valuesOfDict)
+            {
+                Console.WriteLine(val);
+            }
+
         }
     }
 }
